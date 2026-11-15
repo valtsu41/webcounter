@@ -3,6 +3,9 @@ class Counter:
         self._initial_value = initial_value
         self.value = initial_value
 
+    def set(self, value):
+        self.value = value
+
     def increase(self):
         self.value = self.value + 1
 
