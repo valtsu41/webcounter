@@ -5,9 +5,14 @@ Library  Browser
 ${DELAY}     500ms
 ${HOME_URL}  http://localhost:5001
 ${BROWSER}   chromium
+${HEADLESS}  false
 
 *** Keywords ***
 Open And Configure Browser
-    New Browser  browser=${BROWSER}  headless=False  slowMo=${DELAY}
+    IF  $HEADLESS == 'true'
+        New Browser  browser=${BROWSER}  headless=True
+    ELSE
+        New Browser  browser=${BROWSER}  headless=False  slowMo=${DELAY}
+    END
     New Context
     New Page  about:blank
